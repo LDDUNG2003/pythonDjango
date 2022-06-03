@@ -1,0 +1,11 @@
+{% extends 'polls/base.html'%}
+
+{% block content%}
+    {% if dsquest%}
+        {% for item in dsquest%}
+            <a href="{% url 'polls:detatel' item.id %}"><p>{{ item.question_text }}</p></a>
+        {% endfor%}
+    {% else%}
+        <h3 style="color:red"> Bạn chưa nhận được câu hỏi nào</h3>
+    {%endif%}
+{% endblock%}

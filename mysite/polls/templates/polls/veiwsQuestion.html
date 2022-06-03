@@ -1,0 +1,21 @@
+{% extends 'polls/base.html'%} {% block content%}
+
+    {% if qs%}
+        <form action="{% url 'polls:vote' qs.id %}" method="post">
+            {% csrf_token %}
+            <ul>
+                <h1>{{ qs.question_text }}</h1>
+                {% for item in qs.choice_set.all%}
+                <li><input type="radio" value="{{item.id}}" name="choice">{{item.choice_text}}</li>
+                {% endfor%}
+                <p>
+                    <input type="submit" value="gửi">
+                </p>
+            </ul> 
+        </form>
+
+    {% else%}
+        <h3 style="color:red"> Bạn chưa nhận được câu hỏi nào</h3>
+    {%endif%}
+    <a href="{% url 'polls:views_list' %}"> quay lại</a> 
+{% endblock%}

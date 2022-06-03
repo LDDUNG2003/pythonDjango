@@ -1,0 +1,12 @@
+{% extends 'polls/base.html'%}
+
+{% block content%}
+     <h1 class="header">HELLO World</h1>
+    <p>xin chào {{ name }} tôi có thể giúp gì cho bạn</p>
+    <ul class="list-item">
+        {%for item in items%}
+        <li>{{item }}</li>
+        {%endfor%}
+    </ul>
+
+{% endblock%}

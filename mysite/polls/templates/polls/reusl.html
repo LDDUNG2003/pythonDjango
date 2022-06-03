@@ -1,0 +1,12 @@
+{% extends 'polls/base.html'%}
+
+{% block content%}
+    {% if q %}
+        <h1>{{ q.question_text }}</h1>
+        <p> kết quả của bình chọn là : </p>
+        {% for item in q.choice_set.all %}
+            <p>{{ item.choice_text }} : <spam style="color:blue">{{ item.vote }}</spam></p>
+        {% endfor %}
+    {% endif %}
+    <a href="{% url 'polls:detatel' q.id %}"><p>vote tiếp</p></a>
+{% endblock%}
